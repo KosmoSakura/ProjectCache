@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SakuraImage">
+        <!--参考边-->
         <attr name="refer" format="enum">
             <enum name="宽" value="1"/>
             <enum name="高" value="2"/>
         </attr>
+        <!--长宽比例-->
         <attr name="ratio" format="float"/>
+        <!--圆弧度-->
         <attr name="radius" format="float"/>
     </declare-styleable>
 </resources>

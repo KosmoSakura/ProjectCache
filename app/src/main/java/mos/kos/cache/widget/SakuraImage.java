@@ -37,11 +37,11 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
     private int referEdge = 1;//比例参考边：1-width，2-height,默认：1
     private float radius = 0;//圆角弧度
     private int ratioW, ratioH;
-    private BitmapShader mBitmapShader;
-    private final Matrix mShaderMatrix = new Matrix();
-    private Bitmap mBitmap;
-    private Paint mBitmapPaint;
-    private Path mPath = new Path();
+    private final Matrix matrix = new Matrix();
+    private Bitmap bmp;
+    private Paint bmpPaint;
+    private Path path = new Path();
+    private RectF rectF = new RectF();
 
     public SakuraImage(Context context) {
         super(context);
@@ -63,9 +63,9 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
     }
 
     private void initViews() {
-        mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
-        mBitmapPaint.setStyle(Paint.Style.FILL);
-        mBitmapPaint.setAntiAlias(true);
+        bmpPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+        bmpPaint.setStyle(Paint.Style.FILL);
+        bmpPaint.setAntiAlias(true);
 
         Logger.d("比例：" + ratio + ",参考边：" + (referEdge == 1 ? "宽" : "高")
             + "，弧度：" + radius);
@@ -94,75 +94,66 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mViewRect.top = 0;
-        mViewRect.left = 0;
-        mViewRect.right = getWidth(); // 宽度
-        mViewRect.bottom = getHeight(); // 高度
-
+        rectF.top = 0;
+        rectF.left = 0;
+        rectF.right = getWidth(); // 宽度
+        rectF.bottom = getHeight(); // 高度
         setBitmapShader();
     }
 
     @Override
     public void setImageResource(int resId) {
         super.setImageResource(resId);
-        mBitmap = getBitmapFromDrawable(getDrawable());
+        bmp = getBitmapFromDrawable(getDrawable());
         setBitmapShader();
     }
 
     @Override
     public void setImageDrawable(Drawable drawable) {
         super.setImageDrawable(drawable);
-        mBitmap = getBitmapFromDrawable(drawable);
+        bmp = getBitmapFromDrawable(drawable);
         setBitmapShader();
     }
 
     @Override
     public void setScaleType(ScaleType scaleType) {
         if (radius > 0 && scaleType != ScaleType.CENTER_CROP) {
-            throw new IllegalArgumentException(String.format("缩放类型不支持%s。", scaleType));
+            throw new IllegalArgumentException("设置圆弧图片的时候，缩放类型最好是：CENTER_CROP");
         }
     }
 
-    private RectF mViewRect = new RectF(); // imageview的矩形区域
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mBitmap != null) {
-//                canvas.drawRoundRect(mViewRect, mRoundRadius, mRoundRadius, mBitmapPaint);
-            mPath.reset();
-            mPath.addRoundRect(mViewRect, radius, radius, Path.Direction.CW);
-//            mPath.addRoundRect(mViewRect, new float[]{
-//                radius, radius, radius, radius,
-//                radius, radius, radius, radius,
-//            }, Path.Direction.CW);
-            canvas.drawPath(mPath, mBitmapPaint);
+        if (bmp != null) {
+            path.reset();
+            path.addRoundRect(rectF, radius, radius, Path.Direction.CW);
+            canvas.drawPath(path, bmpPaint);
         }
     }
 
 
     private void setBitmapShader() {
-        // super(context, attrs, defStyle)调用setImageDrawable时,成员变量还未被正确初始化
-        if (mBitmapPaint == null) {
+        if (bmpPaint == null) {
             return;
         }
-        if (mBitmap == null) {
+        if (bmp == null) {
             invalidate();
             return;
         }
-        mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        mBitmapPaint.setShader(mBitmapShader);
+        BitmapShader bmpShader = new BitmapShader(bmp, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        bmpPaint.setShader(bmpShader);
 
-        // 固定为CENTER_CROP,使图片在ｖｉｅｗ中居中并裁剪
-        mShaderMatrix.set(null);
-        // 缩放到高或宽与view的高或宽　匹配
-        float scale = Math.max(getWidth() * 1f / mBitmap.getWidth(), getHeight() * 1f / mBitmap.getHeight());
-        // 由于BitmapShader默认是从画布的左上角开始绘制，所以把其平移到画布中间，即居中
-        float dx = (getWidth() - mBitmap.getWidth() * scale) / 2;
-        float dy = (getHeight() - mBitmap.getHeight() * scale) / 2;
-        mShaderMatrix.setScale(scale, scale);
-        mShaderMatrix.postTranslate(dx, dy);
-        mBitmapShader.setLocalMatrix(mShaderMatrix);
-        invalidate();
+        matrix.set(null);//固定为CENTER_CROP
+        // 缩放
+        float scale = Math.max(getWidth() * 1f / bmp.getWidth(), getHeight() * 1f / bmp.getHeight());
+        //居中
+        float dx = (getWidth() - bmp.getWidth() * scale) / 2;
+        float dy = (getHeight() - bmp.getHeight() * scale) / 2;
+        matrix.setScale(scale, scale);
+        matrix.postTranslate(dx, dy);
+        bmpShader.setLocalMatrix(matrix);
+        invalidate();//刷新
     }
 
     /**
