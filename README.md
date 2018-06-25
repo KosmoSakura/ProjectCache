@@ -7,7 +7,7 @@
 
 1.按比例设置图片的长宽
 2.设置圆角图片
-```
+```java
  <mos.kos.cache.widget.SakuraImage
         android:layout_width="200dp"
         android:layout_height="200dp"
