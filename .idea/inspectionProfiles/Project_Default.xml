@@ -56,7 +56,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="Author:,Time:,Email:ZeroProject@foxmail.com,Description:,Ps:,Date:,Email:,Event:" />
+      <option name="myAdditionalJavadocTags" value="Author:,Time:,Email:ZeroProject@foxmail.com,Description:,Ps:,eg,Email:,Event:,eg:" />
     </inspection_tool>
     <inspection_tool class="MapOrSetKeyShouldOverrideHashCodeEquals" enabled="true" level="KosmosWarning" enabled_by_default="true" />
   </profile>

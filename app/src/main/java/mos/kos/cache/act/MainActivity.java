@@ -19,7 +19,9 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         startActivity(new Intent(MainActivity.this, ShowActivity.class));
-        findViewById(R.id.bbbb).setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ShowActivity.class)));
+        findViewById(R.id.bbbb).setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, ShowActivity.class));
+        });
     }
 
 

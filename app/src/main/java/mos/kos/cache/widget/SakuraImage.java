@@ -16,9 +16,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
-import com.orhanobut.logger.Logger;
-
 import mos.kos.cache.R;
+import mos.kos.cache.tool.ALog;
 
 /**
  * @Description: 圆角&比例尺寸
@@ -67,7 +66,7 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
         bmpPaint.setStyle(Paint.Style.FILL);
         bmpPaint.setAntiAlias(true);
 
-        Logger.d("比例：" + ratio + ",参考边：" + (referEdge == 1 ? "宽" : "高")
+        ALog.d("比例：" + ratio + ",参考边：" + (referEdge == 1 ? "宽" : "高")
             + "，弧度：" + radius);
     }
 
@@ -88,7 +87,7 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-        Logger.v("宽高1：ratioW=" + ratioW + ",ratioH=" + ratioH);
+        ALog.v("宽高1：ratioW=" + ratioW + ",ratioH=" + ratioH);
     }
 
     @Override
