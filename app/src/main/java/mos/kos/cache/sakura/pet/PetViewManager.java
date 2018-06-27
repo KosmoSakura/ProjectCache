@@ -13,19 +13,15 @@ import android.view.WindowManager;
 import java.lang.reflect.Field;
 import java.util.Random;
 
-import static mos.kos.cache.sakura.pet.StateConfig.STAND;
-import static mos.kos.cache.sakura.pet.StateConfig.WALK_TO_LEFT;
-import static mos.kos.cache.sakura.pet.StateConfig.WALK_TO_RIGHT;
 
 
 public class PetViewManager {
-
     private float startX;
     private float startY;
     private float x0;
     private float y0;
     private int count = 0;
-    private int state = STAND;
+    private int state = PetState.STAND;
     private boolean isLive = false;
 
     private Context context;
@@ -46,10 +42,10 @@ public class PetViewManager {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case 0 :
+                case 0:
                     moveToLeft();
                     break;
-                case 1 :
+                case 1:
                     moveToRight();
                     break;
                 default:
@@ -58,20 +54,18 @@ public class PetViewManager {
         }
     };
 
-
-
     private View.OnTouchListener petViewTouchListener = new View.OnTouchListener() {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN :
+                case MotionEvent.ACTION_DOWN:
                     startX = event.getRawX();
                     startY = event.getRawY();
                     x0 = event.getRawX();
                     y0 = event.getRawY();
                     break;
-                case MotionEvent.ACTION_MOVE :
+                case MotionEvent.ACTION_MOVE:
                     float x = event.getRawX();
                     float y = event.getRawY();
                     float dx = x - startX;
@@ -83,11 +77,11 @@ public class PetViewManager {
                     startX = x;
                     startY = y;
                     break;
-                case MotionEvent.ACTION_UP :
+                case MotionEvent.ACTION_UP:
                     float x1 = event.getRawX();
                     petView.setDragState(false);
-                    petView.setPetState(STAND);
-                    if(Math.abs(x1 - x0) > 6) {
+                    petView.setPetState(PetState.STAND);
+                    if (Math.abs(x1 - x0) > 6) {
                         return true;
                     } else {
                         return false;
@@ -98,9 +92,9 @@ public class PetViewManager {
     };
 
     public static PetViewManager getInstance(Context context) {
-        if(instance == null) {
+        if (instance == null) {
             synchronized (PetViewManager.class) {
-                if(instance == null) {
+                if (instance == null) {
                     instance = new PetViewManager(context);
                 }
             }
@@ -126,7 +120,7 @@ public class PetViewManager {
     }
 
     public void showPetView() {
-        if(petViewLayoutParams == null) {
+        if (petViewLayoutParams == null) {
             petViewLayoutParams = new WindowManager.LayoutParams();
             petViewLayoutParams.width = petView.width;
             petViewLayoutParams.height = petView.height;
@@ -143,46 +137,46 @@ public class PetViewManager {
 
     public void showPetAnim() {
         state = new Random().nextInt(3);
-        if(state == STAND) {
-            petView.setPetState(STAND);
+        if (state == PetState.STAND) {
+            petView.setPetState(PetState.STAND);
             petView.startStandAnim(this);
-        } else if(state == WALK_TO_RIGHT) {
-            petView.setPetState(WALK_TO_RIGHT);
+        } else if (state == PetState.WALK_TO_RIGHT) {
+            petView.setPetState(PetState.WALK_TO_RIGHT);
             petView.startWalkToRightAnim(this);
-        } else if (state == WALK_TO_LEFT){
-            petView.setPetState(WALK_TO_LEFT);
+        } else if (state == PetState.WALK_TO_LEFT) {
+            petView.setPetState(PetState.WALK_TO_LEFT);
             petView.startWalkToLeftAnim(this);
         }
     }
 
     public void moveToRight() {
-        if(count < 30) {
+        if (count < 30) {
             petViewLayoutParams.x += 2;
             petViewLayoutParams.y += 1;
-            if(isLive) {
+            if (isLive) {
                 windowManager.updateViewLayout(petView, petViewLayoutParams);
             }
         } else {
             count = 0;
         }
-        count ++;
+        count++;
     }
 
     public void moveToLeft() {
-        if(count < 30) {
+        if (count < 30) {
             petViewLayoutParams.x -= 2;
             petViewLayoutParams.y += 1;
-            if(isLive) {
+            if (isLive) {
                 windowManager.updateViewLayout(petView, petViewLayoutParams);
             }
         } else {
             count = 0;
         }
-        count ++;
+        count++;
     }
 
     public void showMenuView() {
-        if(menuViewLayoutParams == null) {
+        if (menuViewLayoutParams == null) {
             menuViewLayoutParams = new WindowManager.LayoutParams();
             menuViewLayoutParams.width = getScreenWidth();
             menuViewLayoutParams.height = getScreenHeight() - getStatusHeight();
@@ -195,7 +189,7 @@ public class PetViewManager {
     }
 
     public void hideMenuView() {
-        if(menuViewLayoutParams != null) {
+        if (menuViewLayoutParams != null) {
             windowManager.removeView(menuView);
         }
     }
@@ -232,11 +226,11 @@ public class PetViewManager {
 
         @Override
         public void run() {
-            if(count < 30) {
-                if(state == WALK_TO_LEFT) {
+            if (count < 30) {
+                if (state == PetState.WALK_TO_LEFT) {
                     mHandler.sendEmptyMessage(0);
                     mHandler.postDelayed(moveToLeft, 50);
-                } else if(state == WALK_TO_RIGHT) {
+                } else if (state == PetState.WALK_TO_RIGHT) {
                     mHandler.sendEmptyMessage(1);
                     mHandler.postDelayed(moveToRight, 50);
                 }
@@ -248,9 +242,9 @@ public class PetViewManager {
     }
 
     public void startMove() {
-        if(state == WALK_TO_LEFT) {
+        if (state == PetState.WALK_TO_LEFT) {
             mHandler.postDelayed(moveToLeft, 50);
-        } else if(state == WALK_TO_RIGHT) {
+        } else if (state == PetState.WALK_TO_RIGHT) {
             mHandler.postDelayed(moveToRight, 50);
         }
     }

@@ -12,17 +12,16 @@ import android.view.View;
 
 import mos.kos.cache.R;
 
-import static mos.kos.cache.sakura.pet.StateConfig.STAND;
-import static mos.kos.cache.sakura.pet.StateConfig.WALK_TO_LEFT;
-import static mos.kos.cache.sakura.pet.StateConfig.WALK_TO_RIGHT;
 
-
+/**
+ * 原作者地址：https://github.com/sufushi/MyPet
+ */
 public class PetView extends View {
 
     private PetViewManager petViewManager;
 
-    public int width = 100;
-    public int height = 100;
+    public int width = 200;//宠物宽度
+    public int height = 200;//宠物高度
 
     public WalkAnim walkToRightAnim = new WalkAnim();
     public WalkAnim walkToLeftAnim = new WalkAnim();
@@ -70,23 +69,23 @@ public class PetView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if(!isDrag) {
+        if (!isDrag) {
             Bitmap pet;
-            if(state == WALK_TO_RIGHT) {
+            if (state == PetState.WALK_TO_RIGHT) {
                 switch (count % 5) {
-                    case 0 :
+                    case 0:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_right1);
                         break;
-                    case 1 :
+                    case 1:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_right2);
                         break;
-                    case 2 :
+                    case 2:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_right3);
                         break;
-                    case 3 :
+                    case 3:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_right4);
                         break;
-                    case 4 :
+                    case 4:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_right5);
                         break;
                     default:
@@ -94,21 +93,21 @@ public class PetView extends View {
                 }
                 petBitmap = Bitmap.createScaledBitmap(pet, width, height, true);
                 canvas.drawBitmap(petBitmap, 0, 0, null);
-            } else if(state == WALK_TO_LEFT){
+            } else if (state == PetState.WALK_TO_LEFT) {
                 switch (count % 5) {
-                    case 0 :
+                    case 0:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_left1);
                         break;
-                    case 1 :
+                    case 1:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_left2);
                         break;
-                    case 2 :
+                    case 2:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_left3);
                         break;
-                    case 3 :
+                    case 3:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_left4);
                         break;
-                    case 4 :
+                    case 4:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.walk_to_left5);
                         break;
                     default:
@@ -116,21 +115,21 @@ public class PetView extends View {
                 }
                 petBitmap = Bitmap.createScaledBitmap(pet, width, height, true);
                 canvas.drawBitmap(petBitmap, 0, 0, null);
-            } else if(state == STAND) {
+            } else if (state == PetState.STAND) {
                 switch (count % 5) {
-                    case 0 :
+                    case 0:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.stand_1);
                         break;
-                    case 1 :
+                    case 1:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.stand_2);
                         break;
-                    case 2 :
+                    case 2:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.stand_3);
                         break;
-                    case 3 :
+                    case 3:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.stand_4);
                         break;
-                    case 4 :
+                    case 4:
                         pet = BitmapFactory.decodeResource(getResources(), R.drawable.stand_5);
                         break;
                     default:
@@ -180,19 +179,18 @@ public class PetView extends View {
     }
 
     public class WalkAnim implements Runnable {
-
         @Override
         public void run() {
-            count ++;
-            if(count < 30) {
+            count++;
+            if (count < 30) {
                 invalidate();
-                if(state == WALK_TO_RIGHT) {
+                if (state == PetState.WALK_TO_RIGHT) {
                     handler.postDelayed(walkToRightAnim, 50);
                     //petViewManager.moveToRight();
-                } else if(state == WALK_TO_LEFT) {
+                } else if (state == PetState.WALK_TO_LEFT) {
                     handler.postDelayed(walkToRightAnim, 50);
                     //petViewManager.moveToLeft();
-                } else if(state == STAND) {
+                } else if (state == PetState.STAND) {
                     handler.postDelayed(standAnim, 50);
                 }
 
