@@ -43,4 +43,6 @@
     <color name="gray">#bebebe</color>
     <color name="android">#2E7D32</color>
     <color name="dark_gray">#333333</color>
+
+    <!--以下是本项目用到的颜色-->
 </resources>

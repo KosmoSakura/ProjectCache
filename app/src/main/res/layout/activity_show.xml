@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context=".act.ShowActivity">
 
-    <mos.kos.cache.widget.SakuraImage
+    <mos.kos.cache.sakura.SakuraImage
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:scaleType="centerCrop"

@@ -1,4 +1,4 @@
-package mos.kos.cache.widget;
+package mos.kos.cache.sakura;
 
 import android.content.Context;
 import android.content.res.TypedArray;
