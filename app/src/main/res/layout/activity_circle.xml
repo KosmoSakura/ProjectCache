@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sakura="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".act.CircleActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <mos.kos.cache.sakura.image.SakuraImage
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image"
+        sakura:radius="20"
+        sakura:ratio="2"
+        sakura:refer="高"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <mos.kos.cache.sakura.image.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/image"
+        sakura:civ_border_color="#40a12a"
+        sakura:civ_border_width="5dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+
+</LinearLayout>

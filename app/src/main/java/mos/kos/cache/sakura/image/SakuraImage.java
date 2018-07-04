@@ -1,4 +1,4 @@
-package mos.kos.cache.sakura;
+package mos.kos.cache.sakura.image;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -32,14 +32,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void logic() {
-//        startActivity(new Intent(MainActivity.this, ShowActivity.class));
+//        startActivity(new Intent(MainActivity.this, CircleActivity.class));
     }
 
     @Override
     protected void action(int ids) {
         switch (ids) {
             case R.id.bbbb:
-                startActivity(new Intent(MainActivity.this, ShowActivity.class));
+                startActivity(new Intent(MainActivity.this, CircleActivity.class));
                 break;
             case R.id.btn_show:
                 petViewManager = PetViewManager.getInstance(MainActivity.this);
