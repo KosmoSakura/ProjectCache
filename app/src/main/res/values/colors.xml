@@ -45,4 +45,5 @@
     <color name="dark_gray">#333333</color>
 
     <!--以下是本项目用到的颜色-->
+    <color name="toast_black">#21211d</color>
 </resources>

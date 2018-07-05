@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import mos.kos.cache.R;
+import mos.kos.cache.sakura.whorl.ProgressHUD;
+
 /**
  * @Description: <p>
  * @Author: Kosmos
@@ -13,6 +16,7 @@ import android.view.View;
  * @Event:
  */
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
+    private ProgressHUD progressHUD;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,5 +47,25 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Override
     public final void onClick(View view) {
         action(view.getId());
+    }
+
+    protected void showProgress() {
+        if (progressHUD == null) {
+            progressHUD = new ProgressHUD(this, R.style.PopupWindowListDialog);
+        }
+        progressHUD.showDialog("加载中...");
+    }
+
+    protected void showProgress(String msg) {
+        if (progressHUD == null) {
+            progressHUD = new ProgressHUD(this, R.style.PopupWindowListDialog);
+        }
+        progressHUD.showDialog(msg);
+    }
+
+    protected void hideProgress() {
+        if (progressHUD != null && progressHUD.isShowing()) {
+            progressHUD.hideDialog();
+        }
     }
 }

@@ -20,7 +20,7 @@ public class MenuView extends LinearLayout {
 
     public MenuView(final Context context) {
         super(context);
-        View view = View.inflate(context, R.layout.layout_menu, null);
+        View view = View.inflate(context, R.layout.lay_menu, null);
         linearLayout =  view.findViewById(R.id.menu_layout);
         translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0);
         translateAnimation.setDuration(500);

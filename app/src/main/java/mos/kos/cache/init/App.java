@@ -12,11 +12,17 @@ import mos.kos.cache.tool.ALog;
  * @Email: KosmoSakura@foxmail.com
  */
 public class App extends Application {
+    private static App instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         initLog();//初始化日志
+    }
+
+    public static App getInstance() {
+        return instance;
     }
 
     private void initLog() {

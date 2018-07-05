@@ -2,20 +2,14 @@ package mos.kos.cache.act;
 
 import android.content.Intent;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import mos.kos.cache.R;
 import mos.kos.cache.init.BaseActivity;
-import mos.kos.cache.sakura.pet.PetViewManager;
-import mos.kos.cache.sakura.pet.PetViewService;
 
 
 /**
  * 主页
  */
 public class MainActivity extends BaseActivity {
-    private PetViewManager petViewManager;
 
     @Override
     protected int layout() {
@@ -24,10 +18,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void basis() {
-        findViewById(R.id.bbbb).setOnClickListener(this);
-        findViewById(R.id.btn_show).setOnClickListener(this);
-        findViewById(R.id.btn_anim).setOnClickListener(this);
-        findViewById(R.id.btn_all).setOnClickListener(this);
+        findViewById(R.id.to_list_page).setOnClickListener(this);
+        findViewById(R.id.to_image_page).setOnClickListener(this);
+        findViewById(R.id.to_pet_page).setOnClickListener(this);
     }
 
     @Override
@@ -38,46 +31,18 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void action(int ids) {
         switch (ids) {
-            case R.id.bbbb:
+            case R.id.to_image_page:
                 startActivity(new Intent(MainActivity.this, CircleActivity.class));
                 break;
-            case R.id.btn_show:
-                petViewManager = PetViewManager.getInstance(MainActivity.this);
-                petViewManager.showPetView();
+            case R.id.to_pet_page:
+                startActivity(new Intent(MainActivity.this, PetActivity.class));
                 break;
-            case R.id.btn_anim:
-                new Timer().scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                /*Intent intent = new Intent();
-                intent.setAction("UPDATE_ACTION");
-                sendBroadcast(intent);*/
-                        petViewManager.showPetAnim();
-
-                    }
-                }, 0, 1000 * 4);
-                break;
-            case R.id.btn_all:
-                new Timer().scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(MainActivity.this, PetViewService.class);
-                        startService(intent);
-//                        finish();
-                    }
-                }, 0, 1000 * 4);
+            case R.id.to_list_page:
+                showProgress();
                 break;
             default:
                 break;
         }
     }
-
-
-    @Override
-    protected void onDestroy() {
-        stopService(new Intent(MainActivity.this, PetViewService.class));
-        super.onDestroy();
-    }
-
 
 }

@@ -10,5 +10,15 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
-
+    <!--对话框主题-->
+    <style name="PopupWindowListDialog" parent="android:Theme.Dialog">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowFrame">@null</item> <!-- 去除边框 -->
+        <item name="android:windowIsFloating">false</item> <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item> <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item> <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 自己想要的背景 -->
+        <item name="android:backgroundDimEnabled">false</item> <!-- 背景遮罩层 -->
+    </style>
 </resources>

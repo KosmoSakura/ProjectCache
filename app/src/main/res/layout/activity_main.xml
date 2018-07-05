@@ -9,35 +9,21 @@
     tools:context=".act.MainActivity">
 
     <Button
-        android:id="@+id/bbbb"
+        android:id="@+id/to_image_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="圆形图片"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/to_pet_page"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="桌面宠物"/>
 
-        <Button
-            android:id="@+id/btn_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="显示"/>
+    <Button
+        android:id="@+id/to_list_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="列表"/>
 
-        <Button
-            android:id="@+id/btn_anim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="动画"/>
-
-        <Button
-            android:id="@+id/btn_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="全部启动"/>
-    </LinearLayout>
 </LinearLayout>
