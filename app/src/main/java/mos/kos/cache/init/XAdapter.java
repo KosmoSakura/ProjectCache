@@ -13,23 +13,23 @@ import java.util.ArrayList;
  * @Author: Kosmos
  * @Date: 2018年07月05日 18:06
  * @Email: KosmoSakura@foxmail.com
- * @Event:
  */
-public abstract class XAdapter extends RecyclerView.Adapter<XAdapter.XHolder> {
-    public ArrayList datas = null;
+public abstract class XAdapter<B, VH extends XHolder> extends RecyclerView.Adapter<XHolder> {
+    private ArrayList<B> datas = null;
 
-    public XAdapter(ArrayList datas) {
+    public XAdapter(ArrayList<B> datas) {
         this.datas = datas;
     }
 
     protected abstract int layout();
 
-//    protected abstract int logic(T holder, int position);
+//    protected abstract int logic(VH holder, int position);
 
     @NonNull
     @Override
-    public XAdapter.XHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new XHolder(LayoutInflater.from(parent.getContext()).inflate(layout(), parent, false));
+    public XHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout(), parent, false);
+        return new XHolder(view);
     }
 
     @Override
@@ -37,16 +37,10 @@ public abstract class XAdapter extends RecyclerView.Adapter<XAdapter.XHolder> {
 
     }
 
+
     @Override
     public int getItemCount() {
         return datas.size();
     }
 
-    //自定义的ViewHolder，持有每个Item的的所有界面元素
-    protected class XHolder extends RecyclerView.ViewHolder {
-
-        protected XHolder(View view) {
-            super(view);
-        }
-    }
 }
