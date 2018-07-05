@@ -3,6 +3,7 @@ package mos.kos.cache.act;
 import android.content.Intent;
 
 import mos.kos.cache.R;
+import mos.kos.cache.act.list.ListAlphaActivity;
 import mos.kos.cache.init.BaseActivity;
 
 
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, PetActivity.class));
                 break;
             case R.id.to_list_page:
-                showProgress();
+                startActivity(new Intent(MainActivity.this, ListAlphaActivity.class));
                 break;
             default:
                 break;

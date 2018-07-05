@@ -4,7 +4,7 @@
 
     <!-- 悬浮框 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <!--读取网络状态-->
+    <!-- 读取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".act.CircleActivity"/>
         <activity android:name=".act.PetActivity"/>
+        <activity android:name=".act.list.ListAlphaActivity">
+        </activity>
     </application>
 
 </manifest>

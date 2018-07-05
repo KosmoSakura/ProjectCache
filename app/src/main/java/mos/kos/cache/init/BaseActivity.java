@@ -2,7 +2,7 @@ package mos.kos.cache.init;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import mos.kos.cache.R;
@@ -15,7 +15,7 @@ import mos.kos.cache.sakura.whorl.ProgressHUD;
  * @Email: KosmoSakura@foxmail.com
  * @Event:
  */
-public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     private ProgressHUD progressHUD;
 
     @Override

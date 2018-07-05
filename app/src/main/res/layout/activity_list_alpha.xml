@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/alpha_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#181818"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="@null"
+            android:text="back"
+            android:textColor="#ffffff"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/back_to_top"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:background="@null"
+            android:text="backToTop"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+    <x.rv.XRecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"/>
+</LinearLayout>
