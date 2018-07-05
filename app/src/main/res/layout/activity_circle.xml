@@ -37,6 +37,13 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
+    <mos.kos.cache.sakura.image.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/image"
+        sakura:civ_border_color="#192b92"
+        sakura:civ_border_width="10dp"/>
+
 
 
 </LinearLayout>

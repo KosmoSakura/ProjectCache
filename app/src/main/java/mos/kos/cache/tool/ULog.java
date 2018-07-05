@@ -47,7 +47,7 @@ import javax.xml.transform.stream.StreamSource;
  * desc  : 一个精简、全面、方便的 Android Log 库
  * 作者GitHub地址：https://github.com/Blankj
  */
-public final class ALog {
+public final class ULog {
 
     public static final int V = Log.VERBOSE;
     public static final int D = Log.DEBUG;
@@ -89,7 +89,7 @@ public final class ALog {
     private static Config sConfig;
     private static ExecutorService sExecutor;
 
-    private ALog() {
+    private ULog() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

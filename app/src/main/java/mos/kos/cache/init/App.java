@@ -3,7 +3,7 @@ package mos.kos.cache.init;
 import android.app.Application;
 
 import mos.kos.cache.BuildConfig;
-import mos.kos.cache.tool.ALog;
+import mos.kos.cache.tool.ULog;
 
 /**
  * @Description: <p>
@@ -26,7 +26,7 @@ public class App extends Application {
     }
 
     private void initLog() {
-        ALog.init(this)
+        ULog.init(this)
             .setLogSwitch(BuildConfig.DEBUG)// 设置 log 总开关，包括输出到控制台和文件，默认开
             .setConsoleSwitch(BuildConfig.DEBUG)// 设置是否输出到控制台开关，默认开
             .setGlobalTag("Sakura")// 设置 log 全局标签，默认为空
@@ -38,8 +38,8 @@ public class App extends Application {
             .setFilePrefix("Sakura")// 当文件前缀为空时，默认为 "alog"，即写入文件为 "alog-MM-dd.txt"
             .setBorderSwitch(true)// 输出日志是否带边框开关，默认开
             .setSingleTagSwitch(true)// 一条日志仅输出一条，默认开，为美化 AS 3.1 的 Logcat
-            .setConsoleFilter(ALog.V)// log 的控制台过滤器，和 logcat 过滤器同理，默认 Verbose
-            .setFileFilter(ALog.V)// log 文件过滤器，和 logcat 过滤器同理，默认 Verbose
+            .setConsoleFilter(ULog.V)// log 的控制台过滤器，和 logcat 过滤器同理，默认 Verbose
+            .setFileFilter(ULog.V)// log 文件过滤器，和 logcat 过滤器同理，默认 Verbose
             .setStackDeep(1)// log 栈深度，默认为 1
             .setStackOffset(0);// 设置栈偏移，比如二次封装的话就需要设置，默认为 0
     }

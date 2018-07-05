@@ -20,6 +20,7 @@
 > `radius`为圆弧长度，圆弧长<=0的时候，弧度为0，大于0的时候图片展示有弧度
 ><br/> `ratio`为长宽的比例、`refer`为参考边
 
+![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/images.png)
 #### 2.桌面宠物
 #### 3.粒子雨
 #### 4.时光轴

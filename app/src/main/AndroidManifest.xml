@@ -25,13 +25,15 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".act.CircleActivity"/>
         <activity android:name=".act.PetActivity"/>
         <activity android:name=".act.list.ListAlphaActivity"/>
+        <activity android:name=".act.list.ListToolbarActivity">
+        </activity>
     </application>
 
 </manifest>

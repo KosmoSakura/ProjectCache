@@ -8,22 +8,10 @@
     android:orientation="vertical"
     tools:context=".act.MainActivity">
 
-    <Button
-        android:id="@+id/to_image_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="圆形图片"/>
+    <x.rv.XRecyclerView
+        android:id="@+id/main_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-    <Button
-        android:id="@+id/to_pet_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="桌面宠物"/>
-
-    <Button
-        android:id="@+id/to_list_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="列表"/>
 
 </LinearLayout>

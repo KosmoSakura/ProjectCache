@@ -8,7 +8,6 @@ import android.view.View;
  * @Author: Kosmos
  * @Date: 2018年07月05日 18:32
  * @Email: KosmoSakura@foxmail.com
- * @Event:
  */
 public class XHolder extends RecyclerView.ViewHolder {
     private View contentView;
@@ -19,7 +18,7 @@ public class XHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressWarnings("unchecked")
-    public <V extends View> V findView(int resId) {
+    public <V extends View> V getView(int resId) {
         return (V) contentView.findViewById(resId);
     }
 }

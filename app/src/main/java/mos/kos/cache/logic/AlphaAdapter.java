@@ -2,6 +2,8 @@ package mos.kos.cache.logic;
 
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,20 +24,24 @@ public class AlphaAdapter extends XAdapter<AlphaBean, AlphaAdapter.AlphaHolder> 
         super(datas);
     }
 
+    @NonNull
     @Override
-    protected int layout() {
-        return R.layout.item_alpha;
+    public AlphaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AlphaHolder(creatView(parent, R.layout.item_alpha));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull XHolder holder, int position) {
-
+    protected void logic(AlphaHolder holder, int position) {
+        holder.mTextView.setText(list.get(position).getName());
     }
 
 
     class AlphaHolder extends XHolder {
+        TextView mTextView;
+
         AlphaHolder(View view) {
             super(view);
+            mTextView = getView(R.id.text);
         }
     }
 }

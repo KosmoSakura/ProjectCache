@@ -1,8 +1,7 @@
 package mos.kos.cache.act.list;
 
 import android.os.Handler;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ import mos.kos.cache.init.BaseActivity;
 import mos.kos.cache.logic.AlphaAdapter;
 import x.rv.XRecyclerView;
 
-public class ListAlphaActivity extends BaseActivity implements XRecyclerView.LoadingListener {
+public class ListToolbarActivity extends BaseActivity implements XRecyclerView.LoadingListener {
     private AlphaAdapter mAdapter;
     private ArrayList<AlphaBean> listData;
     private int refreshTime = 0;
@@ -20,56 +19,27 @@ public class ListAlphaActivity extends BaseActivity implements XRecyclerView.Loa
 
     @Override
     protected int layout() {
-        return R.layout.activity_list_alpha;
+        return R.layout.activity_list_toolbar;
     }
 
     @Override
     protected void basis() {
-        findViewById(R.id.back).setOnClickListener(this);
-        findViewById(R.id.back_to_top).setOnClickListener(this);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listData = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            listData.add(new AlphaBean("item" + i));
+        }
         mAdapter = new AlphaAdapter(listData);
         initXrv(mAdapter, R.id.recyclerview);
     }
 
-
     @Override
     protected void logic() {
-        LinearLayout alpha_title = findViewById(R.id.alpha_title);
-        xrv.setScrollAlphaChangeListener(new XRecyclerView.ScrollAlphaChangeListener() {
-            @Override
-            public void onAlphaChange(int alpha) {
-//                ULog.d("alpha:" + alpha);
-                if (alpha < 10) {
-                    alpha_title.setVisibility(View.GONE);
-                } else {
-                    alpha_title.setVisibility(View.VISIBLE);
-                    alpha_title.getBackground().setAlpha(alpha);
-                }
-            }
-
-            @Override
-            public int setLimitHeight() {
-                return 1300;
-            }
-        });
         xrv.setLoadingListener(this);
         xrv.refresh();
-    }
-
-    @Override
-    protected void action(int ids) {
-        switch (ids) {
-            case R.id.back:
-                finish();
-                break;
-            case R.id.back_to_top:
-                xrv.scrollToPosition(0);
-                break;
-            default:
-                break;
-        }
     }
 
     @Override
@@ -79,7 +49,7 @@ public class ListAlphaActivity extends BaseActivity implements XRecyclerView.Loa
         new Handler().postDelayed(() -> {
             listData.clear();
             for (int i = 0; i < 15; i++) {
-                listData.add(new AlphaBean("序号：" + i + "在 " + refreshTime + " 次后刷新"));
+                listData.add(new AlphaBean("item" + i + "after " + refreshTime + " times of refresh"));
             }
             mAdapter.notifyDataSetChanged();
             xrv.refreshComplete();
@@ -90,8 +60,9 @@ public class ListAlphaActivity extends BaseActivity implements XRecyclerView.Loa
     public void onLoadMore() {
         if (page < 2) {
             new Handler().postDelayed(() -> {
+                xrv.loadMoreComplete();
                 for (int i = 0; i < 15; i++) {
-                    listData.add(new AlphaBean("序号：" + (1 + listData.size())));
+                    listData.add(new AlphaBean("item" + (i + listData.size())));
                 }
                 xrv.loadMoreComplete();
                 mAdapter.notifyDataSetChanged();
@@ -99,7 +70,7 @@ public class ListAlphaActivity extends BaseActivity implements XRecyclerView.Loa
         } else {
             new Handler().postDelayed(() -> {
                 for (int i = 0; i < 9; i++) {
-                    listData.add(new AlphaBean("序号：" + (1 + listData.size())));
+                    listData.add(new AlphaBean("item" + (1 + listData.size())));
                 }
                 xrv.setNoMore(true);
                 mAdapter.notifyDataSetChanged();

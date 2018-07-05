@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 
 import mos.kos.cache.R;
-import mos.kos.cache.tool.ALog;
+import mos.kos.cache.tool.ULog;
 
 /**
  * @Description: 圆角&比例尺寸
@@ -66,7 +66,7 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
         bmpPaint.setStyle(Paint.Style.FILL);
         bmpPaint.setAntiAlias(true);
 
-        ALog.d("比例：" + ratio + ",参考边：" + (referEdge == 1 ? "宽" : "高")
+        ULog.d("比例：" + ratio + ",参考边：" + (referEdge == 1 ? "宽" : "高")
             + "，弧度：" + radius);
     }
 
@@ -87,7 +87,7 @@ public class SakuraImage extends android.support.v7.widget.AppCompatImageView {
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-        ALog.v("宽高1：ratioW=" + ratioW + ",ratioH=" + ratioH);
+        ULog.v("宽高1：ratioW=" + ratioW + ",ratioH=" + ratioH);
     }
 
     @Override

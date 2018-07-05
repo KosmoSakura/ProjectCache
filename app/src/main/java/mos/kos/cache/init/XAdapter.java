@@ -7,40 +7,47 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @Description: <p>
+ * @Description: 所以的适配器他爹
  * @Author: Kosmos
  * @Date: 2018年07月05日 18:06
  * @Email: KosmoSakura@foxmail.com
  */
-public abstract class XAdapter<B, VH extends XHolder> extends RecyclerView.Adapter<XHolder> {
-    private ArrayList<B> datas = null;
+public abstract class XAdapter<B, VH extends XHolder> extends RecyclerView.Adapter<VH> {
+    protected ArrayList<B> list;
+
 
     public XAdapter(ArrayList<B> datas) {
-        this.datas = datas;
+        list = datas;
     }
 
-    protected abstract int layout();
 
-//    protected abstract int logic(VH holder, int position);
+
+    protected abstract void logic(VH holder, int position);
+
+    protected View creatView(ViewGroup parent, int layout) {
+        return LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        logic(holder, position);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull VH holder, int position, @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+        logic(holder, position);
+    }
 
     @NonNull
     @Override
-    public XHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(layout(), parent, false);
-        return new XHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull XHolder holder, int position) {
-
-    }
-
+    public abstract VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
 
     @Override
     public int getItemCount() {
-        return datas.size();
+        return list.size();
     }
-
 }

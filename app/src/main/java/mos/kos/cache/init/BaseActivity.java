@@ -3,20 +3,23 @@ package mos.kos.cache.init;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import mos.kos.cache.R;
 import mos.kos.cache.sakura.whorl.ProgressHUD;
+import x.rv.XRecyclerView;
+import x.rv.logic.ProgressStyle;
 
 /**
  * @Description: <p>
  * @Author: Kosmos
  * @Date: 2018年07月04日 16:59
  * @Email: KosmoSakura@foxmail.com
- * @Event:
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     private ProgressHUD progressHUD;
+    protected XRecyclerView xrv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +27,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setContentView(layout());
         basis();
         logic();
+    }
+
+    protected void initXrv(XAdapter adapter, int res) {
+        xrv = findViewById(res);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        xrv.setLayoutManager(layoutManager);
+
+        xrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        xrv.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
+        xrv.setArrowImageView(R.drawable.ic_font);
+        xrv.setAdapter(adapter);
     }
 
     /**
