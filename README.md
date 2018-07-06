@@ -28,6 +28,8 @@
 ![转转转](https://github.com/KosmoSakura/ProjectCache/blob/master/show/Whorl.gif)
 #### 6.下拉刷新：基于XRecyclerView二次开发：https://github.com/XRecyclerView/XRecyclerView
 
+---
+
 License
 -------
 
