@@ -1,6 +1,7 @@
 package mos.kos.cache.tool;
 
 import android.graphics.Paint;
+import android.text.Editable;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -70,6 +71,22 @@ public class UTxt {
             return defaul;
         } else {
             return str;
+        }
+    }
+
+    public static String isNull(Editable str, String defaul) {
+        if (isEmpty(str)) {
+            return isNull(defaul);
+        } else {
+            return str.toString();
+        }
+    }
+
+    public static String isNull(CharSequence str, String defaul) {
+        if (isEmpty(str)) {
+            return isNull(defaul);
+        } else {
+            return str.toString();
         }
     }
 
@@ -203,6 +220,10 @@ public class UTxt {
      */
     public static boolean isEmpty(String str) {
         return str == null || TextUtils.isEmpty(str.trim()) || str.equalsIgnoreCase("null");
+    }
+
+    public static boolean isEmpty(CharSequence str) {
+        return isEmpty(str.toString());
     }
 
     //------------------------------------------------------------------------------------------------

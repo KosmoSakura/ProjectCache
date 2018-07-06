@@ -11,7 +11,6 @@ import mos.kos.cache.R;
 import mos.kos.cache.data.MainBean;
 import mos.kos.cache.init.XAdapter;
 import mos.kos.cache.init.XHolder;
-import mos.kos.cache.tool.ULog;
 
 /**
  * @Description: <p>
@@ -56,8 +55,6 @@ public class MainAdapter extends XAdapter<MainBean, MainAdapter.AlphaHolder> {
             mTextView = getView(R.id.item_main_text);
             getView(R.id.item_main_root).setOnClickListener(view1 -> {
                 int position = getLayoutPosition() - 1;
-                ULog.d("Position:" + getLayoutPosition());
-                ULog.d("Position:" + getAdapterPosition());
                 if (listener != null && position < list.size()) {
                     listener.onItemClick(list.get(position));
                 }

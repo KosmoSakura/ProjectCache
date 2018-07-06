@@ -3,6 +3,7 @@ package mos.kos.cache.init;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -19,6 +20,39 @@ import x.rv.logic.ProgressStyle;
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     private ProgressHUD progressHUD;
+    /**
+     * @1.更新数据： 调用单元刷新记得调：XRecyclerView的函数
+     * @ xrv.notifyItemRemoved(list, 0);
+     * xrv.notifyItemInserted(list, list.size());
+     * ************************************************
+     * @2.下拉刷新-开关 true-可以下拉刷新
+     * @ xrv.setPullRefreshEnabled(false);
+     * ************************************************
+     * @3.1.加载更多-开关 true-没有更多
+     * @ xrv.setNoMore(true);
+     * @3.2. 加载更多-动画
+     * ProgressStyle.BallRotate//球旋转
+     * xrv.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);//方形旋转
+     * ************************************************
+     * @4.设置占位页
+     * @ xrv.setEmptyView(View);
+     * ************************************************
+     * @5.1.头部视图-自定义-头部可以添加多个
+     * @ View header = LayoutInflater.from(this).inflate(R.layout.lay_head, findViewById(android.R.id.content), false);
+     * xrv.addHeaderView(View);
+     * @5.2.头部视图-启动默认记录刷新时间
+     * @ xrv.getDefaultRefreshHeaderView()
+     * .setRefreshTimeVisible(true);
+     * ************************************************
+     * @6.1.尾部视图-自定义
+     * @ xrv.setFootView(View,CustomFooterViewCallBack)
+     * @6.2.底部提示语-自定义
+     * @ xrv.setFootViewText("自定义加载中提示","自定义加载完毕提示");
+     * 分开设置
+     * xrv.getDefaultFootView().setLoadingHint("自定义加载中提示 ");
+     * xrv.getDefaultFootView().setNoMoreHint("自定义加载完毕提示");
+     * ************************************************
+     */
     protected XRecyclerView xrv;
 
     @Override
@@ -33,6 +67,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         xrv = findViewById(res);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        xrv.setLayoutManager(layoutManager);
+
+        xrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        xrv.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);//方形旋转
+//        xrv.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);//球旋转
+        xrv.setArrowImageView(R.drawable.ic_font);
+        xrv.setAdapter(adapter);
+    }
+
+    protected void initXrvGrid(XAdapter adapter, int res, int spanCount) {
+        xrv = findViewById(res);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, spanCount);
         xrv.setLayoutManager(layoutManager);
 
         xrv.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);

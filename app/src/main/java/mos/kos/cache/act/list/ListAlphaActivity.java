@@ -30,7 +30,12 @@ public class ListAlphaActivity extends BaseActivity implements XRecyclerView.Loa
 
         listData = new ArrayList<>();
         mAdapter = new AlphaAdapter(listData);
-        initXrv(mAdapter, R.id.recyclerview);
+        boolean stytle = getIntent().getBooleanExtra("list_style", true);
+        if (stytle) {
+            initXrv(mAdapter, R.id.recyclerview);
+        } else {
+            initXrvGrid(mAdapter, R.id.recyclerview, 3);
+        }
     }
 
 

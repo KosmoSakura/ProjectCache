@@ -19,6 +19,15 @@ import mos.kos.cache.init.XHolder;
  * @Email: KosmoSakura@foxmail.com
  */
 public class AlphaAdapter extends XAdapter<AlphaBean, AlphaAdapter.AlphaHolder> {
+    private ItemClickListener listener;
+
+    public interface ItemClickListener {
+        void onItemClick(AlphaBean bean, int position);
+    }
+
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public AlphaAdapter(ArrayList<AlphaBean> datas) {
         super(datas);
@@ -42,6 +51,12 @@ public class AlphaAdapter extends XAdapter<AlphaBean, AlphaAdapter.AlphaHolder> 
         AlphaHolder(View view) {
             super(view);
             mTextView = getView(R.id.text);
+            getView(R.id.item_main_root).setOnClickListener(view1 -> {
+                int position = getLayoutPosition() - 1;
+                if (listener != null && position < list.size()) {
+                    listener.onItemClick(list.get(position), position);
+                }
+            });
         }
     }
 }

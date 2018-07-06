@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x.rv.StickyScrollLinearLayout
+    android:id="@+id/StickyScrollLinearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#5abdc7"
+        android:gravity="center"
+        android:text="StickyScroll\nXRecyclerView"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/tabView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f3ce69"
+        android:padding="20dp"
+        android:text="我是他妈的TabView，\ n 你可以让我成为一个ViewGroup"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <x.rv.XRecyclerView
+            android:id="@+id/XRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</x.rv.StickyScrollLinearLayout>

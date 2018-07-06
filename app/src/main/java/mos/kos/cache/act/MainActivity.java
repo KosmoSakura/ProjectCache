@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import mos.kos.cache.R;
 import mos.kos.cache.act.list.ListAlphaActivity;
 import mos.kos.cache.act.list.ListToolbarActivity;
+import mos.kos.cache.act.list.RefreshActivity;
+import mos.kos.cache.act.list.StickyActivity;
 import mos.kos.cache.data.MainBean;
 import mos.kos.cache.init.BaseActivity;
 import mos.kos.cache.logic.MainAdapter;
+import mos.kos.cache.tool.UDialog;
 import x.rv.XRecyclerView;
 
 
@@ -31,6 +34,9 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
         list = new ArrayList<>();
         adapter = new MainAdapter(list);
         initXrv(adapter, R.id.main_list);
+        xrv.setLimitNumberToCallLoadMore(3);
+        xrv.getDefaultRefreshHeaderView()
+            .setRefreshTimeVisible(true);
     }
 
     @Override
@@ -46,14 +52,16 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
                     startActivity(new Intent(MainActivity.this, PetActivity.class));
                     break;
                 case 3://Alpha刷新:
-                    startActivity(new Intent(MainActivity.this, ListAlphaActivity.class));
-//                    list.remove(0);
-//                    xrv.notifyItemRemoved(list, 0);
+                    lisToGo(ListAlphaActivity.class);
                     break;
                 case 4://ToolBar刷新:
-//                    list.add(new MainBean("Alpha刷新", 5));
-//                    xrv.notifyItemInserted(list, list.size());
-                    startActivity(new Intent(MainActivity.this, ListToolbarActivity.class));
+                    lisToGo(ListToolbarActivity.class);
+                    break;
+                case 5://头部添加，头尾刷新:
+                    lisToGo(RefreshActivity.class);
+                    break;
+                case 6://头部添加，头尾刷新:
+                    lisToGo(StickyActivity.class);
                     break;
             }
 
@@ -61,12 +69,31 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
         xrv.setLoadingListener(this);
     }
 
+    private void lisToGo(Class cls) {
+        UDialog.getInstance(this, true, true)
+            .showSelect("选择列表类型", "列表类型", "表格类型", 0
+                , (result, dia) -> {
+                    Intent intent = new Intent(MainActivity.this, cls);
+                    intent.putExtra("list_style", true);
+                    startActivity(intent);
+                    dia.dismiss();
+                }
+                , dia -> {
+                    Intent intent = new Intent(MainActivity.this, cls);
+                    intent.putExtra("list_style", false);
+                    startActivity(intent);
+                    dia.dismiss();
+                });
+    }
+
     private void refreshData() {
         list.clear();
         list.add(new MainBean("图形图片", 1));
         list.add(new MainBean("桌面宠物", 2));
-        list.add(new MainBean("Alpha刷新", 3));
-        list.add(new MainBean("ToolBar刷新", 4));
+        list.add(new MainBean("列表:Alpha", 3));
+        list.add(new MainBean("列表:ToolBar", 4));
+        list.add(new MainBean("列表:头部添加，头尾刷新", 5));
+        list.add(new MainBean("LinearStickyScrollActivity", 6));
         adapter.notifyDataSetChanged();
     }
 
@@ -83,7 +110,6 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
     public void onLoadMore() {
         new Handler().postDelayed(() -> {
             xrv.loadMoreComplete();
-//            xrv.setNoMore(list.size() > 10);
         }, 1000);
     }
 }

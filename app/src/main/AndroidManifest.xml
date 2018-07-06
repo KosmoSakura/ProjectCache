@@ -34,6 +34,10 @@
         <activity android:name=".act.list.ListAlphaActivity"/>
         <activity android:name=".act.list.ListToolbarActivity">
         </activity>
+        <activity android:name=".act.list.RefreshActivity">
+        </activity>
+        <activity android:name=".act.list.StickyActivity">
+        </activity>
     </application>
 
 </manifest>
