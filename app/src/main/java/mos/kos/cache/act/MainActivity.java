@@ -10,6 +10,9 @@ import mos.kos.cache.act.list.ListAlphaActivity;
 import mos.kos.cache.act.list.ListToolbarActivity;
 import mos.kos.cache.act.list.RefreshActivity;
 import mos.kos.cache.act.list.StickyActivity;
+import mos.kos.cache.act.singel.CircleActivity;
+import mos.kos.cache.act.singel.KeyboardActivity;
+import mos.kos.cache.act.singel.PetActivity;
 import mos.kos.cache.data.MainBean;
 import mos.kos.cache.init.BaseActivity;
 import mos.kos.cache.logic.MainAdapter;
@@ -51,16 +54,19 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
                 case 2://桌面宠物
                     startActivity(new Intent(MainActivity.this, PetActivity.class));
                     break;
-                case 3://Alpha刷新:
+                case 3://定制键盘
+                    startActivity(new Intent(MainActivity.this, KeyboardActivity.class));
+                    break;
+                case 4://Alpha刷新:
                     lisToGo(ListAlphaActivity.class);
                     break;
-                case 4://ToolBar刷新:
+                case 5://ToolBar刷新:
                     lisToGo(ListToolbarActivity.class);
                     break;
-                case 5://头部添加，头尾刷新:
+                case 6://头部添加，头尾刷新:
                     lisToGo(RefreshActivity.class);
                     break;
-                case 6://头部添加，头尾刷新:
+                case 7://头部添加，头尾刷新:
                     lisToGo(StickyActivity.class);
                     break;
             }
@@ -90,10 +96,11 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
         list.clear();
         list.add(new MainBean("图形图片", 1));
         list.add(new MainBean("桌面宠物", 2));
-        list.add(new MainBean("列表:Alpha", 3));
-        list.add(new MainBean("列表:ToolBar", 4));
-        list.add(new MainBean("列表:头部添加，头尾刷新", 5));
-        list.add(new MainBean("LinearStickyScrollActivity", 6));
+        list.add(new MainBean("定制键盘", 3));
+        list.add(new MainBean("列表:Alpha", 4));
+        list.add(new MainBean("列表:ToolBar", 5));
+        list.add(new MainBean("列表:头部添加，头尾刷新", 6));
+        list.add(new MainBean("LinearStickyScrollActivity", 7));
         adapter.notifyDataSetChanged();
     }
 

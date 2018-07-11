@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mos.kos.cache.sakura.keyboard.LatinKeyboardView
+    android:id="@+id/keyboard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+
+</mos.kos.cache.sakura.keyboard.LatinKeyboardView>

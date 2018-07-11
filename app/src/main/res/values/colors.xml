@@ -46,4 +46,8 @@
 
     <!--以下是本项目用到的颜色-->
     <color name="toast_black">#21211d</color>
+    <color name="candidate_normal">#FF000000</color>
+    <color name="candidate_recommended">#FFE35900</color>
+    <color name="candidate_other">#ff808080</color>
+    <color name="candidate_background">#bbffffff</color>
 </resources>

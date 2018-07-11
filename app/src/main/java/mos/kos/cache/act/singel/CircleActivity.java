@@ -1,4 +1,4 @@
-package mos.kos.cache.act;
+package mos.kos.cache.act.singel;
 
 import mos.kos.cache.R;
 import mos.kos.cache.init.BaseActivity;

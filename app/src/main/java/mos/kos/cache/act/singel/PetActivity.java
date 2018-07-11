@@ -1,4 +1,4 @@
-package mos.kos.cache.act;
+package mos.kos.cache.act.singel;
 
 import android.content.Intent;
 

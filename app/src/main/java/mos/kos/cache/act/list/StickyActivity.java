@@ -39,21 +39,21 @@ public class StickyActivity extends BaseActivity {
                 // 放在这里是为了等初始化结束后再添加，防止 height 获取 =0
                 // add from here just in cause they height==0
                 s.setInitInterface(new StickyScrollLinearLayout.StickyScrollInitInterface() {
-                        @Override
-                        public View setTopView() {
-                            return topView;
-                        }
+                                       @Override
+                                       public View setTopView() {
+                                           return topView;
+                                       }
 
-                        @Override
-                        public View setTabView() {
-                            return tabView;
-                        }
+                                       @Override
+                                       public View setTabView() {
+                                           return tabView;
+                                       }
 
-                        @Override
-                        public View setContentView() {
-                            return content;
-                        }
-                    }
+                                       @Override
+                                       public View setContentView() {
+                                           return content;
+                                       }
+                                   }
                 );
             }
         );
