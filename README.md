@@ -20,7 +20,6 @@
 > `radius`为圆弧长度，圆弧长<=0的时候，弧度为0，大于0的时候图片展示有弧度
 ><br/> `ratio`为长宽的比例、`refer`为参考边
 
-![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/images.png)
 - 1.宽高比为1的时候
 ![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_1.png)
 - 2.这里是以宽为参考边
