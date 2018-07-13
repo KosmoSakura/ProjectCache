@@ -29,11 +29,15 @@
 #### 2.桌面宠物
 基于[MyPet](https://github.com/sufushi/MyPet)二次开发
 #### 3.粒子雨
+粒子绘制的雨
 #### 4.时光轴
+类似于QQ空间的时光轴效果
 #### 5.转转转
 ![转转转](https://github.com/KosmoSakura/ProjectCache/blob/master/show/Whorl.gif)
-#### 6.下拉刷新：基于[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)二次开发
+#### 6.下拉刷新
+基于[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)二次开发
 #### 7.讯飞语音转文字
+集成讯飞语音输入框架
 
 
 -------
