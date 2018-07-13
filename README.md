@@ -21,12 +21,20 @@
 ><br/> `ratio`为长宽的比例、`refer`为参考边
 
 ![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/images.png)
+- 1.宽高比为1的时候
+![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_1.png)
+- 2.这里是以宽为参考边
+![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_2.png)
+- 3.这里是以高为参考边
+![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_3.png)
+
 #### 2.桌面宠物
 #### 3.粒子雨
 #### 4.时光轴
 #### 5.转转转
 ![转转转](https://github.com/KosmoSakura/ProjectCache/blob/master/show/Whorl.gif)
 #### 6.下拉刷新：基于XRecyclerView二次开发：https://github.com/XRecyclerView/XRecyclerView
+#### 7.讯飞语音转文字
 
 
 -------
