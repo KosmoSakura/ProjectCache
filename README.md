@@ -26,13 +26,13 @@
 ![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_2.png)
 - 3.这里是以高为参考边
 ![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_3.png)
-
 #### 2.桌面宠物
+基于[MyPet](https://github.com/sufushi/MyPet)二次开发
 #### 3.粒子雨
 #### 4.时光轴
 #### 5.转转转
 ![转转转](https://github.com/KosmoSakura/ProjectCache/blob/master/show/Whorl.gif)
-#### 6.下拉刷新：基于XRecyclerView二次开发：https://github.com/XRecyclerView/XRecyclerView
+#### 6.下拉刷新：基于[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)二次开发
 #### 7.讯飞语音转文字
 
 
