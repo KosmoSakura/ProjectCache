@@ -6,6 +6,7 @@ import android.os.Handler;
 import java.util.ArrayList;
 
 import mos.kos.cache.R;
+import mos.kos.cache.act.iflytek.IflytekActivity;
 import mos.kos.cache.act.list.ListAlphaActivity;
 import mos.kos.cache.act.list.ListToolbarActivity;
 import mos.kos.cache.act.list.RefreshActivity;
@@ -69,6 +70,9 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
                 case 7://头部添加，头尾刷新:
                     lisToGo(StickyActivity.class);
                     break;
+                case 8://讯飞语音输入
+                    startActivity(new Intent(MainActivity.this, IflytekActivity.class));
+                    break;
             }
 
         });
@@ -101,6 +105,7 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
         list.add(new MainBean("列表:ToolBar", 5));
         list.add(new MainBean("列表:头部添加，头尾刷新", 6));
         list.add(new MainBean("LinearStickyScrollActivity", 7));
+        list.add(new MainBean("讯飞语音输入", 8));
         adapter.notifyDataSetChanged();
     }
 

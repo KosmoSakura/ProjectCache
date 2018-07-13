@@ -27,7 +27,7 @@
 - 3.这里是以高为参考边
 ![圆角图片](https://github.com/KosmoSakura/ProjectCache/blob/master/show/circle_3.png)
 #### 2.桌面宠物
-基于[MyPet](https://github.com/sufushi/MyPet)二次开发
+基于[sufushi/MyPet](https://github.com/sufushi/MyPet)二次开发
 #### 3.粒子雨
 粒子绘制的雨
 #### 4.时光轴
