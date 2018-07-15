@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "mos.kos.cache"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -13,6 +13,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //解决 native libraries 不支持cpu的体系结构。允许模拟器调试
+    // 但这样做后在打包时会产生多个 apk
+    //所以发布版本时把上面的代码注释掉后 rebuild 一下工程再打包. 切记一定要 rebuild 工程!
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a','x86_64'
+            universalApk true
         }
     }
     sourceSets {

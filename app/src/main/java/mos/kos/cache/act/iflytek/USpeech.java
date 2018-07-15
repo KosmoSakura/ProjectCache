@@ -31,7 +31,7 @@ public class USpeech implements InitListener, RecognizerDialogListener {
      * 初始化语音识别
      */
     public void init(Context context) {
-        SpeechUtility.createUtility(context, SpeechConstant.APPID + "=5b45cf88");
+        SpeechUtility.createUtility(context, SpeechConstant.APPID + "=");
         //1.创建RecognizerDialog对象
         mDialog = new RecognizerDialog(context, this);
         //2.设置accent、language等参数
