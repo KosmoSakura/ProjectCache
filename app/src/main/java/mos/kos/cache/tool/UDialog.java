@@ -61,7 +61,7 @@ public class UDialog {
 
     /**
      * @param Cancelable 是否可以通过返回键关闭
-     * @param outside 是否可以点击外面关闭
+     * @param outside    是否可以点击外面关闭
      */
     public static UDialog getInstance(Context context, boolean Cancelable, boolean outside) {
         if (instance == null) {
@@ -78,6 +78,16 @@ public class UDialog {
      */
     public void showNotice(String msg, String strSure, int res) {
         show(null, msg, null, strSure, null, res);
+    }
+
+    /**
+     * @param msg     通知内容
+     * @param strSure 确认按钮字样
+     * @apiNote 显示确认对话框
+     */
+    public void showNoticeConfirm(String title, String msg, String strSure, SureClick sureClick) {
+        this.sureClick = sureClick;
+        show(title, msg, null, strSure, null, R.drawable.ball);
     }
 
     /**
