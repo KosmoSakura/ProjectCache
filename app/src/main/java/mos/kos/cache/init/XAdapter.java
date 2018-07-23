@@ -24,8 +24,7 @@ public abstract class XAdapter<B, VH extends XHolder> extends RecyclerView.Adapt
     }
 
 
-
-    protected abstract void logic(VH holder, int position);
+    protected abstract void logic(VH holder, B bean, int position);
 
     protected View creatView(ViewGroup parent, int layout) {
         return LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
@@ -33,13 +32,17 @@ public abstract class XAdapter<B, VH extends XHolder> extends RecyclerView.Adapt
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        logic(holder, position);
+        if (list != null && list.get(position) != null) {
+            logic(holder, list.get(position), position);
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
-        logic(holder, position);
+        if (list != null && list.get(position) != null) {
+            logic(holder, list.get(position), position);
+        }
     }
 
     @NonNull

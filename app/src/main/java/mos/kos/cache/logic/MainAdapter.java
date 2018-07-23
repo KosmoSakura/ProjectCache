@@ -18,7 +18,7 @@ import mos.kos.cache.init.XHolder;
  * @Date: 2018年07月05日 18:12
  * @Email: KosmoSakura@foxmail.com
  */
-public class MainAdapter extends XAdapter<MainBean, MainAdapter.AlphaHolder> {
+public class MainAdapter extends XAdapter<MainBean, MainAdapter.MainHolder> {
     private ItemClickListener listener;
 
     public interface ItemClickListener {
@@ -35,21 +35,19 @@ public class MainAdapter extends XAdapter<MainBean, MainAdapter.AlphaHolder> {
 
     @NonNull
     @Override
-    public AlphaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new AlphaHolder(creatView(parent, R.layout.item_main));
+    public MainHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MainHolder(creatView(parent, R.layout.item_main));
     }
 
     @Override
-    protected void logic(AlphaHolder holder, int position) {
-        holder.mTextView.setText(list.get(position).getName());
-
+    protected void logic(MainHolder holder, MainBean bean, int position) {
+        holder.mTextView.setText(bean.getName());
     }
 
-
-    class AlphaHolder extends XHolder {
+    class MainHolder extends XHolder {
         TextView mTextView;
 
-        AlphaHolder(View view) {
+        MainHolder(View view) {
             super(view);
 
             mTextView = getView(R.id.item_main_text);

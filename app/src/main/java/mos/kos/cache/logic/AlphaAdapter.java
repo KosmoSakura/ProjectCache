@@ -40,10 +40,9 @@ public class AlphaAdapter extends XAdapter<AlphaBean, AlphaAdapter.AlphaHolder> 
     }
 
     @Override
-    protected void logic(AlphaHolder holder, int position) {
-        holder.mTextView.setText(list.get(position).getName());
+    protected void logic(AlphaHolder holder, AlphaBean bean, int position) {
+        holder.mTextView.setText(bean.getName());
     }
-
 
     class AlphaHolder extends XHolder {
         TextView mTextView;

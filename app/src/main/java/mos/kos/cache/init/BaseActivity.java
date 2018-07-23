@@ -110,21 +110,30 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         action(view.getId());
     }
 
-    protected void showProgress() {
+    protected void progressShow() {
         if (progressHUD == null) {
             progressHUD = new ProgressHUD(this, R.style.PopupWindowListDialog);
         }
         progressHUD.showDialog("加载中...");
     }
 
-    protected void showProgress(String msg) {
+    /**
+     * @param msg 显示进度条
+     */
+    protected void progressShow(String msg) {
         if (progressHUD == null) {
             progressHUD = new ProgressHUD(this, R.style.PopupWindowListDialog);
         }
         progressHUD.showDialog(msg);
     }
 
-    protected void hideProgress() {
+    protected void progressText(String msg) {
+        if (progressHUD != null && progressHUD.isShowing()) {
+            progressHUD.setMessage(msg);
+        }
+    }
+
+    protected void progressHide() {
         if (progressHUD != null && progressHUD.isShowing()) {
             progressHUD.hideDialog();
         }

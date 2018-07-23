@@ -28,8 +28,8 @@
     <color name="T_mini_black">#bd000000</color>
     <color name="T_mini_gay">#bda1a1a1</color>
     <color name="T_mini_blue">#ac39acc2</color>
-    <color name="T_rain">#5cc0deb6</color>
     <!--项目颜色值-->
+    <color name="T_rain">#af97d6d6</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="pink">#cc8484</color>

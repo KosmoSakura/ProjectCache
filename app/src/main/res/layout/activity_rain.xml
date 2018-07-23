@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect_toaststyle"
+    tools:ignore="PxUsage">
+
+    <ImageView
+        android:id="@+id/rain_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/T_all"
+        android:scaleType="centerCrop"/>
+
+    <mos.kos.cache.sakura.rain.RainView
+        android:id="@+id/rain_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/T_all"
+        android:keepScreenOn="true"
+        app:auto_color="true"
+        app:rain_color="@color/T_rain"
+        app:rain_lengh="40"
+        app:rain_num="120"
+        />
+
+
+    <SeekBar
+        android:id="@+id/sb_rain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="30dp"
+        android:max="200"
+        android:progress="20"
+        />
+
+</FrameLayout>

@@ -39,4 +39,13 @@
         <attr name="whorlview_sweepAngle" format="float"/>
         <attr name="whorlview_strokeWidth" format="float"/>
     </declare-styleable>
+
+
+    <!--粒子雨-->
+    <declare-styleable name="RainView">
+        <attr name="rain_num" format="integer"/>
+        <attr name="rain_lengh" format="integer"/>
+        <attr name="rain_color" format="color"/>
+        <attr name="auto_color" format="boolean"/>
+    </declare-styleable>
 </resources>

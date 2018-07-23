@@ -14,6 +14,8 @@ import mos.kos.cache.act.list.StickyActivity;
 import mos.kos.cache.act.singel.CircleActivity;
 import mos.kos.cache.act.singel.KeyboardActivity;
 import mos.kos.cache.act.singel.PetActivity;
+import mos.kos.cache.act.singel.RainActivity;
+import mos.kos.cache.act.time.TimeLineActivity;
 import mos.kos.cache.data.MainBean;
 import mos.kos.cache.init.BaseActivity;
 import mos.kos.cache.logic.MainAdapter;
@@ -37,7 +39,7 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
     protected void basis() {
         list = new ArrayList<>();
         adapter = new MainAdapter(list);
-        initXrv(adapter, R.id.main_list);
+        initXrvGrid(adapter, R.id.main_list, 3);
         xrv.setLimitNumberToCallLoadMore(3);
         xrv.getDefaultRefreshHeaderView()
             .setRefreshTimeVisible(true);
@@ -73,6 +75,12 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
                 case 8://讯飞语音输入
                     startActivity(new Intent(MainActivity.this, IflytekActivity.class));
                     break;
+                case 9://粒子雨
+                    startActivity(new Intent(MainActivity.this, RainActivity.class));
+                    break;
+                case 10://时光轴
+                    startActivity(new Intent(MainActivity.this, TimeLineActivity.class));
+                    break;
             }
 
         });
@@ -106,22 +114,29 @@ public class MainActivity extends BaseActivity implements XRecyclerView.LoadingL
         list.add(new MainBean("列表:头部添加，头尾刷新", 6));
         list.add(new MainBean("LinearStickyScrollActivity", 7));
         list.add(new MainBean("讯飞语音输入", 8));
+        list.add(new MainBean("粒子雨", 9));
+        list.add(new MainBean("时光轴", 10));
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onRefresh() {
+        progressShow("正在刷新");
         new Handler().postDelayed(() -> {
+            progressText("刷新完成");
             refreshData();
             xrv.refreshComplete();
+            new Handler().postDelayed(this::progressHide, 500);
         }, 1000);
 
     }
 
     @Override
     public void onLoadMore() {
+        progressShow();
         new Handler().postDelayed(() -> {
             xrv.loadMoreComplete();
+            progressHide();
         }, 1000);
     }
 }
