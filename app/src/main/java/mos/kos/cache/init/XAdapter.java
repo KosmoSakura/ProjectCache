@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Description: 所以的适配器他爹
+ * @Description: 所有的适配器他爹
  * @Author: Kosmos
  * @Date: 2018年07月05日 18:06
  * @Email: KosmoSakura@foxmail.com
