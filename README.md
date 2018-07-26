@@ -40,7 +40,7 @@
 ![转转转](https://github.com/KosmoSakura/ProjectCache/blob/master/show/Whorl.gif)
 
 #### 6.下拉刷新【研究状态：进行中】
-基于[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)的研究、测试心得和笔记
+基于[XRecyclerView](https://github.com/XRecyclerView/XRecyclerView)的研究、测试心得和笔记snapseed
 - 关于基类XHolder的封装
 - 还有所有的适配器他爹XAdapter的封装
 
